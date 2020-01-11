@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/incoming/', function(req, res, next) {
   const response = new twilio.twiml.VoiceResponse();
-  response.say("Connecting you to Trevor ");
+  response.say("Connecting you to Trevor");
   response.dial('+17783182935', {
     action: '/goodbye/'
   });
@@ -20,7 +20,7 @@ router.post('/incoming/', function(req, res, next) {
 
 router.post('/goodbye/', (req, res) => {
   const response = new twilio.twiml.VoiceResponse();
-  response.say("Thank you for using Call Congress! " +
+  response.say("Thank you for using Call Trevor! " +
                "Your voice makes a difference. Goodbye.");
   response.hangup();
   res.set('Content-Type', 'text/xml');
