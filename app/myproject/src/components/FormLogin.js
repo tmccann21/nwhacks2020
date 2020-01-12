@@ -130,7 +130,7 @@ inputBox: {
     backgroundColor: '#eeeeee', 
     borderRadius: 25,
     paddingHorizontal: 16,
-    fontSize: 16,
+    fontSize: 20,
     color: '#002f6c',
     marginVertical: 10
 },
@@ -142,7 +142,7 @@ button: {
     paddingVertical: 12
 },
 buttonText: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: '500',
     color: '#ffffff',
     textAlign: 'center'

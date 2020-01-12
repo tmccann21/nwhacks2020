@@ -38,8 +38,8 @@ export default class App extends Component   {
     return (
       <View style={styles.container}>
          <Image 
-         style= {{justifyContent: 'center', alignItems: 'center'}}  
-         source={require('./logo1.png')} />
+         style= {{height:200, paddingLeft:250}}  
+         source={require('./logo.png')} />
         <StatusBar
           backgroundColor="#002f6c" 
           barStyle="light-content"

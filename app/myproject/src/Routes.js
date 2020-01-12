@@ -10,8 +10,8 @@ export default class Routes extends Component {
         return (
             <Router barButtonIconStyle ={styles.barButtonIconStyle}
                 hideNavBar={false} 
-                navigationBarStyle={{backgroundColor: '#b22222',}} 
-                titleStyle={{color: 'white',}}
+                navigationBarStyle={{backgroundColor: '#b22222', height:50,}} 
+                titleStyle={{color: 'white', fontSize:30,}}
             >
                 <Stack key="root">
                 <Scene key="login" component={Login} title="Login"/>

@@ -132,7 +132,7 @@ inputBox: {
     backgroundColor: '#eeeeee', 
     borderRadius: 25,
     paddingHorizontal: 16,
-    fontSize: 16,
+    fontSize: 20,
     color: '#002f6c',
     marginVertical: 10
 },

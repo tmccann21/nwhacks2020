@@ -22,8 +22,8 @@ export default class Account extends Component {
                 <Text style={styles.welcomeText}>Welcome Trevor!</Text>
                 <Text style={styles.blurb}>Your personal scam slam phone number is:
                 +1 (778) 711-4278 </Text>
-                <Text style={styles.info}>You can use this number for filling out 
-                forms as thsi will redirect to your current number. It will be used to detect scam calls.</Text>
+                <Text style={styles.info}>You can give this personal scam slam phone number out as your
+                 number and it will be redirect to your actual number.</Text>
                 {/* <Form type="Account"/> */}
                 {/* <View style={styles.signinTextCont}> 
                     <Text style={styles.signupText}>Already have an account? </Text>
