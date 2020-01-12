@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, AsyncStorage, Keyboard } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 
+import account from '../pages/Account';
 
-export default class Form extends Component {
+export default class FormLogin extends Component {
     constructor(props){        
         super(props);        
         this.state={       
@@ -12,6 +13,15 @@ export default class Form extends Component {
             email:'',
             password: '',        
         }   
+    }
+
+    getName() {
+        return name;
+    }
+
+    
+    account() {
+        Actions.account()
     }
 
     saveData =async()=>{
@@ -32,6 +42,8 @@ export default class Form extends Component {
             Keyboard.dismiss();
             alert("You successfully registered. Email: " + email + ' password: ' + password);
             this.login();
+            // this.account()
+            
         }
         else if(this.props.type == 'Login')
         {
@@ -39,16 +51,28 @@ export default class Form extends Component {
                 let loginDetails = await AsyncStorage.getItem('loginDetails');
                 let ld = JSON.parse(loginDetails);
 
-                if (ld.email != null && ld.password != null)
+                // this.account();
+
+                // if (ld.email != null && ld.password != null)
+                // {
+                //     if (ld.email == email && ld.password == password)
+                //     {
+                //         alert('Go in!');
+                //         this.account();
+                //     }
+                //     else
+                //     {
+                //         alert('Email and Password does not exist!');
+                //     }
+                // }
+                if (email != null && password != null)
                 {
-                    if (ld.email == email && ld.password == password)
-                    {
-                        alert('Go in!');
-                    }
-                    else
-                    {
-                        alert('Email and Password does not exist!');
-                    }
+                    // alert('Go in!');
+                    this.account();
+                    
+                }
+                else {
+                    alert('Email and Password does not exist!');
                 }
 
             }catch(error)

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, AsyncStorage, Keyb
 import {Actions} from 'react-native-router-flux';
 
 
-export default class Form extends Component {
+export default class FormSignup extends Component {
     constructor(props){        
         super(props);        
         this.state={       
@@ -12,6 +12,14 @@ export default class Form extends Component {
             email:'',
             password: '',        
         }   
+    }
+
+    account() {
+        Actions.account();
+    }
+
+    login() {
+        Actions.login();
     }
 
     saveData =async()=>{
@@ -30,7 +38,8 @@ export default class Form extends Component {
             AsyncStorage.setItem('loginDetails', JSON.stringify(loginDetails));
 
             Keyboard.dismiss();
-            alert("You successfully registered. Email: " + email + ' password: ' + password);
+            alert("You successfully registered. Please log in with your email and password!");
+            // alert("You successfully registered. Email: " + email + ' password: ' + password);
             this.login();
         }
         else if(this.props.type == 'Login')
