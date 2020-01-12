@@ -8,6 +8,8 @@ require('dotenv').config()
 var app = require('../app');
 var debug = require('debug')('nwhacks:server');
 var http = require('http');
+var WebSocket = require("ws");
+
 
 /**
  * Get port from environment and store in Express.
@@ -21,6 +23,10 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+var socket = require('../socket/socket');
+
+wss.on("connection", socket.socket);
 
 /**
  * Listen on provided port, on all network interfaces.

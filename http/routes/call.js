@@ -2,20 +2,25 @@ var express = require('express');
 var twilio = require('twilio');
 var router = express.Router();
 
+const forward_response = `<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Say>Connecting you to Trevor</Say>
+    <Dial action="/goodbye/">+17783182935</Dial>
+    <Start>
+   		<Stream url="wss://c4973224.ngrok.io" />
+	</Start>
+</Response>
+`
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.json({message: 'incoming request'})
 });
 
 router.post('/incoming/', function(req, res, next) {
-  const response = new twilio.twiml.VoiceResponse();
-  response.say("Connecting you to Trevor");
-  response.dial('+17783182935', {
-    action: '/goodbye/'
-  });
   res.set('Content-Type', 'text/xml');
 
-  return res.send(response.toString());
+  return res.send(forward_response);
 });
 
 router.post('/goodbye/', (req, res) => {
