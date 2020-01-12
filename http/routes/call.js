@@ -4,11 +4,11 @@ var router = express.Router();
 
 const forward_response = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Say>Connecting you to Trevor</Say>
-    <Dial action="/goodbye/">+17783182935</Dial>
-    <Start>
-   		<Stream url="wss://c4973224.ngrok.io" />
-	</Start>
+  <Say>Connecting you to Trevor</Say>
+  <Start>
+    <Stream url="wss://c4973224.ngrok.io" />
+  </Start>
+  <Dial>+17783182935</Dial>
 </Response>
 `
 
