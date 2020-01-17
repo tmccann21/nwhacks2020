@@ -10,7 +10,6 @@ var debug = require('debug')('nwhacks:server');
 var http = require('http');
 var WebSocket = require("ws");
 
-
 /**
  * Get port from environment and store in Express.
  */
@@ -32,6 +31,7 @@ wss.on("connection", socket.socket);
  * Listen on provided port, on all network interfaces.
  */
 
+console.log("Server Starting on Port: "+port)
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

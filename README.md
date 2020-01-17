@@ -12,3 +12,10 @@ Scam Slam is a product which protects users by analyzing call audio in real-time
 Scam Slam accepts calls through a Twilio programmatic voice number. The call is forwarded to your real phone number, and the call audio is streamed to our server. First Google Speach to Text API is called to transcribe the audio in real time. Next, the transcribed audio is fed to a neural network to detect and predict whether a scam is occuring. If a scam is detected, we hang up the call to protect users.
 
 For a front-end Scam Slam uses a react-native application to interact with the service. Users can sign up and receive their scam slam public number which will forward calls to the device number.
+
+## Local
+To run locally navigate to `/http` and run
+```
+npm i
+npm start
+```

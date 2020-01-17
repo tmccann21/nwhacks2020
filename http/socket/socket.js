@@ -1,12 +1,9 @@
-const WebSocket = require("ws");
-const express = require("express");
-const app = express();
-const server = require("http").createServer(app);
-const wss = new WebSocket.Server({ server });
-
 //Include Google Speech to Text
 const speech = require("@google-cloud/speech");
 const client = new speech.SpeechClient();
+
+const fraud = require('./fraud')
+const notify = require('../controllers/notify')
 
 //Configure Transcription Request
 const request = {
@@ -15,31 +12,39 @@ const request = {
     sampleRateHertz: 8000,
     languageCode: "en-GB"
   },
-  interimResults: true
+  interimResults: false,
 };
 
-const socket = (ws) => {
-  console.log('a socket has connected');
-
+const socket = (ws, url) => {
   let recognizeStream = null;
+  let callSid = '';
+  let fullCallerTranscript = '';
 
   ws.on("message", function incoming(message) {
     const msg = JSON.parse(message);
     switch (msg.event) {
       case "connected":
-        console.log(`A new call has connected.`);
+        console.log(`A new call has connected`);
 
         // Create Stream to the Google Speech to Text API
         recognizeStream = client
           .streamingRecognize(request)
           .on("error", console.error)
           .on("data", data => {
-            console.log(data.results[0].alternatives[0].transcript);
+            fullCallerTranscript += data.results[0].alternatives[0].transcript;
+            if (fullCallerTranscript.includes('credit')) {
+              notify.slamTheScam(callSid);
+            }
+            fraud.test(fullCallerTranscript).then((scores) => {
+              if(scores.scam > 0.8)
+                notif.slamTheScam(callSid);
+            }).catch(err => console.log(err))
           });
 
         break;
       case "start":
-        console.log(`Starting Media Stream ${msg.streamSid}`);
+        callSid = msg.start.callSid;
+        console.log(`a new media stream for call ${callSid} has been created`);
         break;
       case "media":
         // Write Media Packets to the recognize stream

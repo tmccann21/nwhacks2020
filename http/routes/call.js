@@ -2,13 +2,16 @@ var express = require('express');
 var twilio = require('twilio');
 var router = express.Router();
 
-const forward_response = `<?xml version="1.0" encoding="UTF-8"?>
+const toNumber = process.env.TO_NUMBER;
+const socketURL = process.env.SOCKET_URL;
+
+const callForwardResponse = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say>Connecting you to Trevor</Say>
+  <Say voice="Polly.Russell">the person you're trying to reach is using scam slam scam prevention. Your call is now being forwarded</Say>
   <Start>
-    <Stream url="wss://c4973224.ngrok.io" />
+    <Stream url="${socketURL}" />
   </Start>
-  <Dial>+17783182935</Dial>
+  <Dial>${toNumber}</Dial>
 </Response>
 `
 
@@ -18,18 +21,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/incoming/', function(req, res, next) {
+  const callSid = req.body.CallSid;
   res.set('Content-Type', 'text/xml');
 
-  return res.send(forward_response);
-});
-
-router.post('/goodbye/', (req, res) => {
-  const response = new twilio.twiml.VoiceResponse();
-  response.say("Thank you for using Call Trevor! " +
-               "Your voice makes a difference. Goodbye.");
-  response.hangup();
-  res.set('Content-Type', 'text/xml');
-  res.send(response.toString());
+  const customResponse = callForwardResponse.replace('{callSid}', callSid)
+  return res.send(customResponse);
 });
 
 module.exports = router;
