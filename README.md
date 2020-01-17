@@ -3,7 +3,7 @@
   <img width="300" height="120" src="https://drive.google.com/uc?export=view&id=1pXQlqD8-T1IuCoMwZ9Eu1fYpS_IRiKr0">
 </p>
 <h2 align="center" style="font-size:60px; font-weight:bold; margin-bottom:0px"> Scam Slam </h2>
-<h3 align="center"> NWHacks 2020  </h3>
+<h4 align="center"> NWHacks 2020  </h4>
 
 ## About
 Scam Slam is a product which protects users by analyzing call audio in real-time to detect and interrupt fraudulent phone scams. This project was originally created in 24 Hours for the NWHacks 2020 Hackathon.
