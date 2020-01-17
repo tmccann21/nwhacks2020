@@ -2,7 +2,7 @@
 <p align="center">
   <img width="300" height="120" src="https://drive.google.com/uc?export=view&id=1pXQlqD8-T1IuCoMwZ9Eu1fYpS_IRiKr0">
 </p>
-<h2 align="center" style="font-size:40px; font-weight:bold; margin-bottom:0px"> Scam Slam </h2>
+<h2 align="center" style="font-size:60px; font-weight:bold; margin-bottom:0px"> Scam Slam </h2>
 <h3 align="center"> NWHacks 2020  </h3>
 
 ## About
